@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "outDir": "./built/",
+        "outDir": "./dist/",
         "sourceMap": true,
         "strict": true,
         "noImplicitReturns": true,
@@ -12,6 +12,6 @@
         "experimentalDecorators":true
     },
     "include": [
-        "./src/**/*"
+        "./src/**/*", "config"
     ]
 }

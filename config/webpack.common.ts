@@ -2,15 +2,15 @@ import path from "path";
 import webpack from "webpack";
 //vue-loader v15 need configration
 //tips:https://vue-loader.vuejs.org/migrating.html#migrating-from-v14
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+import { VueLoaderPlugin } from "vue-loader";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
 
 const config: webpack.Configuration = {
-  mode: "production",
   entry: "./src/index.ts",
   output: {
-    path: path.resolve(__dirname, "./dist"),
-    publicPath: "/dist/",
-    filename: "build.js"
+    path: path.resolve(__dirname, "../dist"),
+    filename: "[name]-[hash:8].js"
   },
   module: {
     rules: [
@@ -55,39 +55,21 @@ const config: webpack.Configuration = {
       vue$: "vue/dist/vue.esm.js"
     }
   },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
   performance: {
     hints: false
   },
   devtool: "#eval-source-map",
   plugins: [
     // make sure to include the plugin for the magic
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+       // 用于生成的HTML文档的标题
+       title: 'Webpack 环境配置',
+       // webpack 生成模板的路径
+       template: './public/index.html'
+    })
   ]
 };
-
-if (process.env.NODE_ENV === "production") {
-  config.devtool = "#source-map";
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  config.plugins = (config.plugins || []).concat([
-    new webpack.DefinePlugin({
-      "process.env": {
-        NODE_ENV: '"production"'
-      }
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      sourceMap: true,
-      compress: {
-        warnings: false
-      }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ]);
-}
 
 export default config;
