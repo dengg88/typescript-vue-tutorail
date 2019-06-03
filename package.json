@@ -1,0 +1,27 @@
+{
+  "name": "typescript-vue-tutorail",
+  "version": "1.0.0",
+  "description": "Learn typescript-vue",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "denggang",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^12.0.4",
+    "@types/webpack": "^4.4.32",
+    "@types/webpack-dev-server": "^3.1.6",
+    "css-loader": "^2.1.1",
+    "ts-loader": "^6.0.2",
+    "ts-node": "^8.2.0",
+    "typescript": "^3.5.1",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-property-decorator": "^8.1.1",
+    "vue-template-compiler": "^2.6.10",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  }
+}
