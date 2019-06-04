@@ -1,0 +1,7 @@
+{
+    "extends": [
+        "eslint-config-alloy/typescript"
+    ],
+    "globals": {},
+    "rules": {}
+}
