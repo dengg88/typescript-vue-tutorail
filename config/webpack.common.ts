@@ -5,6 +5,7 @@ import webpack from "webpack";
 import { VueLoaderPlugin } from "vue-loader";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 
 const config: webpack.Configuration = {
   entry: "./src/index.ts",
@@ -64,11 +65,12 @@ const config: webpack.Configuration = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-       // 用于生成的HTML文档的标题
-       title: 'Webpack 环境配置',
-       // webpack 生成模板的路径
-       template: './public/index.html'
-    })
+      // 用于生成的HTML文档的标题
+      title: 'Webpack 环境配置',
+      // webpack 生成模板的路径
+      template: './public/index.html'
+    }),
+    new BundleAnalyzerPlugin()
   ]
 };
 
